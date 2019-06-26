@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="msapplication-TileImage" content="/assets/favicon.png">
+        <title>Piskel-clone</title>
+        <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" integrity="sha256-p6xU9YulB7E2Ic62/PX+h59ayb3PBJ0WFTEQxq0EjHw=" crossorigin="anonymous" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/spectrum/1.8.0/spectrum.min.js"></script>
+<link rel="shortcut icon" href="favicon.png"></head>
+<body>
+    <header>
+        <div class="headline header">
+            <a class="piskel-logo" href="/">
+                <img src="" alt="piskel-logo">
+                <h1>- clone</h1>
+            </a>
+        </div>
+        <div class="create-sprite-container">
+            <button id="createSprite" class="create-sprite-button">Create Sprite</button>
+            <select id="spriteSize" class="select-size">
+                <option value="32">32x32</option>
+                <option value="64">64x64</option>
+                <option value="128">128x128</option>
+            </select>
+        </div>
+    </header>
+    <main>
+        <section class="left section">
+            <div class="tools-wrapper">
+                <div class="tools">
+                    <div id="pen-size-container" class="pen-size-container" rel="tooltip" data-html="true" data-placement="top" title="
+                    <div class='tooltip-container'>
+                        Pen size<br/>from <span class='tooltip-shortcut'>1</span> to <span class='tooltip-shortcut'>4</span> pixels
+                        <div class='tooltip-implemented'>Implemented</div>
+                    </div>
+                    ">
+                        <div class="pen-size-option selected" data-size="1"></div>
+                        <div class="pen-size-option" data-size="2"></div>
+                        <div class="pen-size-option" data-size="3"></div>
+                        <div class="pen-size-option" data-size="4"></div>
+                    </div>
+                    <ul id="tools-container" class="tools-container">
+                        <li class="tool-icon icon-tool-pen selected" data-tool-id="tool-pen" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Pen tool <span class='tooltip-shortcut'>(P)</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-vertical-mirror-pen" data-tool-id="tool-vertical-mirror-pen" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Vertical Mirror pen <span class='tooltip-shortcut'>(V)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Use horizontal axis
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Use horizontal and vertical axis
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-paint-bucket" data-tool-id="tool-paint-bucket" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Paint bucket tool <span class='tooltip-shortcut'>(B)</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-colorswap" data-tool-id="tool-colorswap" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Paint all pixels of the same color <span class='tooltip-shortcut'>(A)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Apply to all layers
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply to all frames
+                            </div>
+                            <div class='tooltip-implemented'>Implemented without layers and frames</div>
+                        </div> 
+                        ">   
+                        </li>
+                        <li class="tool-icon icon-tool-eraser" data-tool-id="tool-eraser" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Eraser tool <span class='tooltip-shortcut'>(E)</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>                        
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-stroke" data-tool-id="tool-stroke" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Stroke tool <span class='tooltip-shortcut'>(L)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Hold shift to draw straight lines
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-rectangle" data-tool-id="tool-rectangle" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Rectangle tool <span class='tooltip-shortcut'>(R)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Keep 1 to 1 ratio
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-circle" data-tool-id="tool-circle" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Circle tool <span class='tooltip-shortcut'>(C)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Keep 1 to 1 ratio
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-move" data-tool-id="tool-move" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Move tool <span class='tooltip-shortcut'>(M)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Apply to all layers
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply to all frames
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>ALT</span>
+                                Wrap canvas borders
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-shape-select" data-tool-id="tool-shape-select" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Shape selection <span class='tooltip-shortcut'>(Z)</span></div>
+                            <div class='tooltip-descriptor'>
+                                Drag the selection to move it. You may switch to other layers and frames.
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+C</span>
+                                Copy the selected area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+V</span>
+                                Paste the copied area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Hold to move the content
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-rectangle-select" data-tool-id="tool-rectangle-select" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Rectangle selection <span class='tooltip-shortcut'>(S)</span></div>
+                            <div class='tooltip-descriptor'>
+                                Drag the selection to move it. You may switch to other layers and frames.
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+C</span>
+                                Copy the selected area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+V</span>
+                                Paste the copied area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Hold to move the content
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-lasso-select" data-tool-id="tool-lasso-select" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Lasso selection <span class='tooltip-shortcut'>(H)</span></div>
+                            <div class='tooltip-descriptor'>
+                                Drag the selection to move it. You may switch to other layers and frames.
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+C</span>
+                                Copy the selected area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL+V</span>
+                                Paste the copied area
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Hold to move the content
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-lighten" data-tool-id="tool-lighten" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Lighten <span class='tooltip-shortcut'>(U)</span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Darken
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply only once per pixel
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-dithering" data-tool-id="tool-dithering" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Dithering tool <span class='tooltip-shortcut'>(T)</span></div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        ">
+                        </li>
+                        <li class="tool-icon icon-tool-colorpicker" data-tool-id="tool-colorpicker" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Color picker <span class='tooltip-shortcut'>(O)</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                        </li>
+                    </ul>
+                    <div class="palette-wrapper">
+                        <div class="tool-icon tool-color-picker" data-initial-title="Primary - left mouse button" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Primary - <span class='tooltip-shortcut'>left mouse button</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                            <input id="color-picker" class="color" type="text" style="display: none;">
+                        </div>
+                        <div class="tool-icon tool-color-picker" data-initial-title="Secondary - right mouse button" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Secondary - <span class='tooltip-shortcut'>right mouse button</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                            <input id="secondary-color-picker" class="secondary-color-picker color" type="text" style="display: none;">
+                        </div>
+                        <div class="swap-colors-button icon-common-swapcolors-arrow-grey" rel="tooltip" data-html="true" data-placement="right" title="
+                        <div class='tooltip-container'>
+                            <div>Swap colors <span class='tooltip-shortcut'>(X)</span></div>
+                            <div class='tooltip-implemented'>Implemented</div>
+                        </div>
+                        ">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="frames-wrapper">
+                <ul id="frames" class="frames-container">
+                </ul>
+            </div>
+        </section>
+        <section class="center section">
+            <div id="canvasContainer" class="canvas">
+                <canvas id="canvas" class="prewiev-grid"></canvas>
+                <canvas id="canGrid"></canvas>
+            </div>
+        </section>
+        <section class="right section">
+            <div class="column-left">
+                <div class="preview-container">
+                        <div class="canvas-container-wrapper minimap-container">
+                            <div class="preview-contextual-actions">
+                                <div class="preview-drop-down">
+                                    <!-- <div class="preview-disable-overlay" data-placement="left"></div> -->
+                                    <div class="preview-contextual-action original-size-button" rel="tooltip" data-html="true" data-placement="left" title="
+                                    <div class='tooltip-container'>
+                                        <div>Original size preview <span class='tooltip-shortcut'>(alt+1)</span></div>
+                                        <div class='tooltip-not-implemented'>Not implemented yet</div>
+                                    </div>
+                                    ">1x</div>
+                                    <div class="preview-contextual-action best-size-button" rel="tooltip" data-html="true" data-placement="left" title="
+                                    <div class='tooltip-container'>
+                                        <div>Best size preview <span class='tooltip-shortcut'>(alt+2)</span></div>
+                                        <div class='tooltip-not-implemented'>Not implemented yet</div>
+                                    </div>
+                                    ">6x</div>
+                                    <div class="preview-contextual-action full-size-button size-button-selected" rel="tooltip" data-html="true" data-placement="left" title="
+                                    <div class='tooltip-container'>
+                                        <div>Full size preview <span class='tooltip-shortcut'>(alt+3)</span></div>
+                                        <div class='tooltip-not-implemented'>Not implemented yet</div>
+                                    </div>
+                                    ">Full</div>
+                                </div>
+                                <div id="toggleGrid" class="preview-contextual-action toggle-grid-button icon-minimap-grid-white selected" rel="tooltip" data-html="true" data-placement="bottom" title="
+                                <div class='tooltip-container'>
+                                    Toggle grid
+                                    <div class='tooltip-implemented'>Implemented</div>
+                                </div>
+                                "></div>
+                                <div id="full-screen" class="preview-contextual-action  open-popup-preview-button  icon-minimap-popup-preview-arrow-white" rel="tooltip" data-html="true" data-placement="bottom" title="
+                                <div class='tooltip-container'>
+                                    Open preview in popup
+                                    <div class='tooltip-implemented'>Implemented</div>
+                                </div>
+                                ">
+                                </div>
+                            </div>
+                            <div class="prew prewiev-grid" id="prew">
+                                <img id="prewimg" src="" alt="">
+                            </div>
+                        </div>
+                </div>
+                <div class="under-preview-block">
+                    <div class="piskel-icon-onion preview-toggle-onion-skin preview-toggle-onion-skin" rel="tooltip" data-html="true" data-placement="bottom" title="
+                    <div class='tooltip-container'>
+                        <div>Toggle onion skin <span class='tooltip-shortcut'>(alt+O)</span></div>
+                        <div class='tooltip-not-implemented'>Not implemented yet</div>
+                    </div>
+                    "></div>
+                    <span id="fps-label" class="display-fps"></span>
+                    <input id="fps" name="fps" class="range-fps" value="1" type="range" min="0" max="24">
+                </div>
+                <div class="toolbox-container layers-list-container">
+                    <h3 class="toolbox-title layers-title">Layers
+                        <div class="layers-toggle-preview piskel-icon-eye layers-toggle-preview-enabled" rel="tooltip" data-html="true" data-placement="left" title="
+                        <div class='tooltip-container'>
+                            <div>Preview all layers <span class='tooltip-shortcut'>(alt+L)</span></div>
+                            <div class='tooltip-descriptor'>Opacity defined in PREFERENCES</div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        "></div>
+                    </h3>
+                    <div class="toolbox-buttons">
+                        <button data-action="add" class="button layers-button piskel-icon-plus" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Create a new layer</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <button data-action="up" class="button layers-button piskel-icon-arrow-up-fat" disabled="disabled" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Move layer up</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <button data-action="down" class="button layers-button piskel-icon-arrow-down-fat" disabled="disabled" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Move layer down</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <button data-action="edit" class="button layers-button piskel-icon-pencil" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Edit layer name</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <button data-action="merge" class="button layers-button piskel-icon-merge" disabled="disabled" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Merge with layer below</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <button data-action="delete" class="button layers-button piskel-icon-close" disabled="disabled" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Delete selected layer</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                    </div>
+                    <ul class="layers-list">
+                        <li class="layer-item current-layer-item" data-layer-index="0">
+                            <span class="layer-name">Layer 1</span>
+                            <span class="layer-item-opacity" rel="tooltip" data-html="true" data-placement="left" title="
+                            <div class='tooltip-container'>Layer opacity</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                            ">1α</span>
+                        </li>
+                        <li class="layer-item" data-layer-index="1">
+                            <span class="layer-name">Layer 2</span>
+                            <span class="layer-item-opacity" rel="tooltip" data-html="true" data-placement="left" title="
+                            <div class='tooltip-container'>Layer opacity</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                            ">1α</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="toolbox-container transformations-container">
+                    <h3 class="toolbox-title transformations-title">Transform</h3>
+                    <ul class="tools-toolbox">
+                        <li class="tool-icon icon-tool-flip" data-tool-id="tool-flip" rel="tooltip" data-html="true" data-placement="left" title="
+                        <div class='tooltip-container'>
+                            <div>Flip vertically <span class='tooltip-shortcut'></span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>ALT</span>
+                                Flip horizontally
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Apply to all layers
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply to all frames
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        "></li>
+                        <li class="tool-icon icon-tool-rotate" data-tool-id="tool-rotate" rel="tooltip" data-html="true" data-placement="left" title="
+                        <div class='tooltip-container'>
+                            <div>Counter-clockwise rotation <span class='tooltip-shortcut'></span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>ALT</span>
+                                Clockwise rotation
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Apply to all layers
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply to all frames
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        "></li>
+                        <li class="tool-icon icon-tool-clone" data-tool-id="tool-clone" rel="tooltip" data-html="true" data-placement="left" title="
+                        <div class='tooltip-container'>
+                            <div>Clone current layer to all frames <span class='tooltip-shortcut'></span></div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        "></li>
+                        <li class="tool-icon icon-tool-center" data-tool-id="tool-center" rel="tooltip" data-html="true" data-placement="left" title="
+                        <div class='tooltip-container'>
+                            <div>Align image to the center <span class='tooltip-shortcut'></span></div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>CTRL</span>
+                                Apply to all layers
+                            </div>
+                            <div class='tooltip-descriptor'>
+                                <span class='tooltip-descriptor-button'>SHIFT</span>
+                                Apply to all frames
+                            </div>
+                            <div class='tooltip-not-implemented'>Not implemented yet</div>
+                        </div>
+                        "></li>
+                    </ul>
+                </div>
+                <div class="toolbox-container palettes-list-container">
+                    <h3 class="toolbox-title palettes-title">Palettes</h3>
+                    <div class="toolbox-buttons">
+                        <button class="button palettes-list-button create-palette-button piskel-icon-plus" data-action="add" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Create a new palette</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                        <select class="button palettes-list-select"><option value="__current-colors">Current colors</option></select>
+                        <button class="button palettes-list-button edit-palette-button piskel-icon-pencil" data-action="edit" rel="tooltip" data-html="true" data-placement="top" title="
+                        <div class='tooltip-container'>Manage this palette</div><div class='tooltip-not-implemented'>Not implemented yet</div>
+                        "></button>
+                    </div>
+                    <div class="palettes-list-colors">
+                        <div class="palettes-list-color palettes-list-primary-color" data-color="#000000" data-color-index="0" title="#000000">
+                        <div data-color="#000000" style="background:#000000"></div>
+                        </div>
+                    
+                        <div class="palettes-list-color" data-color="#080808" data-color-index="1" title="#080808">
+                        <div data-color="#080808" style="background:#080808"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="coords" class="pull-bottom cursor-coordinates">
+                    <div id="canSize"></div>
+                    <span>&nbsp;</span>
+                    <div id="canCoords"></div>
+                </div>
+            </div>
+            <div class="column-right">
+                <div class="sticky-section-wrap">
+                    <div class="vertical-centerer">
+                        <div data-setting="user" class="tool-icon icon-settings-gear-white" rel="tooltip" data-html="true" data-placement="left" title="<span class='highlight'>PREFERENCES</span></br><div class='tooltip-not-implemented'>Not implemented yet</div>">
+                        </div>
+                        <div data-setting="resize" class="tool-icon  icon-settings-resize-white" rel="tooltip" data-html="true" data-placement="left" title="<span class='highlight'>RESIZE</span></br>Resize the drawing area<div class='tooltip-not-implemented'>Not implemented yet</div>">
+                        </div>
+                        <div id="save" data-setting="save" class="tool-icon  icon-settings-save-white" rel="tooltip" data-html="true" data-placement="left" title="<span class='highlight'>SAVE</span></br>Save Project in LocalStorage<br/><div class='tooltip-implemented'>Implemented</div>">
+                        </div>
+                        <div id="export" data-setting="export" class="tool-icon  icon-settings-export-white" rel="tooltip" data-html="true" data-placement="left" title="<span class='highlight'>EXPORT</span></br>Export as Animated GIF<br/><div class='tooltip-implemented'>Implemented</div>">
+                        </div>
+                        <div id="import" data-setting="import" class="tool-icon  icon-settings-open-folder-white" rel="tooltip" data-html="true" data-placement="left" title="<span class='highlight'>LOAD</span></br>Load Project from LocalStorage<br/><div class='tooltip-implemented'>Implemented</div>">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <section class="others">
+        <div class="cheatsheet-link icon-common-keyboard-gold" rel="tooltip" data-html="true" data-placement="right" title="
+        <div class='tooltip-container'>
+            Keyboard shortcuts mapper
+            <div class='tooltip-not-implemented'>Not implemented yet</div>
+        </div>
+        "></div>
+    </section>
+<script type="text/javascript" src="bundle.js"></script></body>
+</html>
